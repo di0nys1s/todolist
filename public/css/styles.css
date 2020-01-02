@@ -10,6 +10,12 @@ h1 {
   padding: 10px;
 }
 
+h2 {
+  text-align: center;
+  position: relative;
+  margin: 5rem;
+}
+
 .box {
   max-width: 400px;
   margin: 50px auto;
@@ -93,4 +99,7 @@ footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
+  font-weight: 900;
+  position: relative;
+  margin-bottom: 2rem;
 }
