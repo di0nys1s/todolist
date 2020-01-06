@@ -141,18 +141,18 @@ app.get("/:customListName", function(req, res) {
   });
 });
 
-app.get("/about", function(req, res) {
-  res.render("about");
-});
+// app.get("/about", function(req, res) {
+//   res.render("about");
+// });
 
-app.post("/work", function(req, res) {
-  let item = req.body.newItem;
-  workItems.push(item);
-  res.redirect("/work");
-});
+// app.post("/work", function(req, res) {
+//   let item = req.body.newItem;
+//   workItems.push(item);
+//   res.redirect("/work");
+// });
 
 let port = process.env.PORT;
-if (port === null || port == "") {
+if (port == null || port == "") {
   port = 3000;
 }
 app.listen(port);
