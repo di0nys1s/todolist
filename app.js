@@ -11,6 +11,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+mongoose.set("useFindAndModify", false);
+
 mongoose.connect(
   "mongodb+srv://admin-john:Bs26072013@cluster0-d7evf.mongodb.net/todolistDB",
   {
@@ -140,16 +142,6 @@ app.get("/:customListName", function(req, res) {
     }
   });
 });
-
-// app.get("/about", function(req, res) {
-//   res.render("about");
-// });
-
-// app.post("/work", function(req, res) {
-//   let item = req.body.newItem;
-//   workItems.push(item);
-//   res.redirect("/work");
-// });
 
 let port = process.env.PORT;
 if (port == null || port == "") {
