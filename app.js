@@ -141,22 +141,12 @@ app.get("/:customListName", function(req, res) {
   });
 });
 
-// app.get("/about", function(req, res) {
-//   res.render("about");
-// });
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
+// app.listen(port);
 
-// app.post("/work", function(req, res) {
-//   let item = req.body.newItem;
-//   workItems.push(item);
-//   res.redirect("/work");
-// });
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-app.listen(port);
-
-app.listen(port, function() {
-  console.log("Server has started successfully");
+app.listen(3000, function() {
+  console.log("Server has started successfully at port 3000");
 });
