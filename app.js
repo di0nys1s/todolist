@@ -151,7 +151,7 @@ app.post("/work", function(req, res) {
   res.redirect("/work");
 });
 
-let port = proces.env.PORT;
+let port = process.env.PORT;
 if (port === null || port == "") {
   port = 3000;
 }
