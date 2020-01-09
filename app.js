@@ -31,13 +31,13 @@ const itemSchema = mongoose.Schema({
 const Item = mongoose.model("Item", itemSchema);
 
 const item1 = new Item({
-  name: "Welcome to your todolist!"
+  name: "Welcome Rose to your List!"
 });
 const item2 = new Item({
-  name: "Hit the + button to add a new item."
+  name: "Submit the button to add a new item."
 });
 const item3 = new Item({
-  name: "<-- Hit this to delete an item."
+  name: "Click the checkbox to delete each item."
 });
 
 const defaultItems = [item1, item2, item3];
