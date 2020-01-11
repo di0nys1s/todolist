@@ -20,17 +20,22 @@ h2 {
   margin: 5rem;
 }
 
+h4 {
+  color: #fff;
+  text-align: center;
+  margin: -10px;
+}
+
 .box {
   max-width: 500px;
   margin: 5rem auto;
   background: #ecedee;
   border-radius: 10px;
   box-shadow: 1rem 2rem 2rem 0.5rem rgba(0, 0, 0, 0.3);
-
 }
 
 #heading {
-  background-color: #A683E3;
+  background-color: #a683e3;
   text-align: center;
 }
 
@@ -38,17 +43,17 @@ h2 {
   min-height: 75px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #F1F1F1;
+  border-bottom: 1px solid #f1f1f1;
 }
 
 .item:last-child {
   border-bottom: 0;
 }
 
-input:checked+p {
+input:checked + p {
   text-decoration: line-through;
-  text-decoration-color: #A683E3;
-  color: #A683E3;
+  text-decoration-color: #a683e3;
+  color: #a683e3;
 }
 
 input[type="checkbox"] {
@@ -72,7 +77,7 @@ button {
   min-height: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #A683E3;
+  background-color: #a683e3;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
@@ -92,7 +97,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
-  box-shadow: inset 0px 0px 2px 1px #A683E3;
+  box-shadow: inset 0px 0px 2px 1px #a683e3;
 }
 
 ::placeholder {

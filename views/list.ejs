@@ -3,6 +3,7 @@
 
         <div class="box" id="heading">
         <h1> <%= listTitle %> </h1>
+        <h4 id="demo"></h4>
     </div>
     <div class="container-fluid box">
     <div class="row">
@@ -24,4 +25,14 @@
 
     </div>
     <%- include("footer") -%>
-    </div>
+
+
+
+<script>
+clock = setInterval(clock, 1000);
+
+function clock() {
+  const now = new Date().toLocaleTimeString();
+  document.getElementById("demo").innerHTML = now;
+}
+</script>
