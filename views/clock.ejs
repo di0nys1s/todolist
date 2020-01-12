@@ -1,0 +1,12 @@
+
+
+<script>
+clock = setInterval(clock, 1000);
+
+function clock() {
+  const now = new Date().toLocaleTimeString("en-US");
+  txtClock = document.querySelector(".text-time"); 
+  txtClock.innerHTML = now;
+}
+
+</script>

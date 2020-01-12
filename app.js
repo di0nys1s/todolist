@@ -90,11 +90,12 @@ app.post("/", function(req, res) {
 });
 
 app.post("/delete", function(req, res) {
-  const checkedItemId = req.body.checkbox;
+  // const checkedItemId = req.body.checkbox;
+  const deletedItemId = req.body.delete;
   const listName = req.body.listName;
 
   if (listName === "Today") {
-    Item.findByIdAndRemove(checkedItemId, function(err) {
+    Item.findByIdAndRemove(deletedItemId, function(err) {
       if (err) {
         console.log(err);
       } else {
@@ -111,7 +112,7 @@ app.post("/delete", function(req, res) {
       // coming from checkbox
       // this is a mongodb pull method to get the
       // array items from mongodb
-      { $pull: { items: { _id: checkedItemId } } },
+      { $pull: { items: { _id: deletedItemId } } },
       function(err, foundList) {
         if (!err) {
           res.redirect("/" + listName);
