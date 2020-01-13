@@ -9,4 +9,17 @@ function clock() {
   txtClock.innerHTML = now;
 }
 
+        if (<%= hour %> >= <%= sunrise %> && <%= hour %> < <%= sunset %> ) {
+            document.querySelector("body").style.backgroundColor = "#f1c40f";
+        } else {
+            document.querySelector("body").style.backgroundColor = "#2c3e50";
+
+        }
+
+// function test() {
+//   $(".todo-content").css("color", "blue");
+// }
+
+// document.querySelector(".todo-content").addEventListener("click", test);
+
 </script>

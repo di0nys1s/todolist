@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const request = require("request");
 
 const app = express();
 
@@ -12,14 +13,20 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.set("useFindAndModify", false);
-mongoose.connect(
-  "mongodb+srv://admin-john:Bs26072013@cluster0-d7evf.mongodb.net/todolistDB",
-  {
-    //mongoose.connect("mongodb://localhost:27017/todolistDB", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
-);
+// mongoose.connect(
+//   "mongodb+srv://admin-john:Bs26072013@cluster0-d7evf.mongodb.net/todolistDB",
+//   {
+mongoose.connect("mongodb://localhost:27017/todolistDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const day = new Date().getDate();
+const month = new Date().getMonth() + 1;
+const year = new Date().getFullYear();
+const hour = new Date().getHours();
+
+const date = " - " + day + "/" + month + "/" + year;
 
 const itemSchema = mongoose.Schema({
   name: {
@@ -34,10 +41,10 @@ const item1 = new Item({
   name: "Welcome Rose to your List!"
 });
 const item2 = new Item({
-  name: "Submit the button to add a new item."
+  name: "Use submit and delete buttons to add and remove item."
 });
 const item3 = new Item({
-  name: "Click the checkbox to delete each item."
+  name: "Create new list via adding /<list-name> to your url."
 });
 
 const defaultItems = [item1, item2, item3];
@@ -49,7 +56,28 @@ const listSchema = {
 
 const List = mongoose.model("List", listSchema);
 
+let bwTemp = 0;
+let sunriseHour = 0;
+let sunsetHour = 0;
 app.get("/", function(req, res) {
+  request(
+    "http://api.openweathermap.org/data/2.5/weather?q=Melbourne,au&APPID=eebb82456e95e58d67552ad0e1ad6cf9",
+    function(error, response, body) {
+      var data = JSON.parse(body);
+      var currentTemperature = data.main.temp;
+      var sunriseTimestamp = data.sys.sunrise;
+      var sunsetTimestamp = data.sys.sunset;
+      var hourSunrise = new Date(sunriseTimestamp * 1000).getHours();
+      var hourSunset = new Date(sunsetTimestamp * 1000).getHours();
+      bwTemp = Math.round(currentTemperature - 273);
+      sunriseHour = hourSunrise;
+      sunsetHour = hourSunset;
+      console.log(bwTemp);
+      console.log(sunriseHour);
+      console.log(sunsetHour);
+    }
+  );
+
   Item.find({}, function(err, foundItems) {
     if (foundItems.length === 0) {
       Item.insertMany(defaultItems, function(err) {
@@ -63,7 +91,12 @@ app.get("/", function(req, res) {
     } else {
       res.render("list", {
         listTitle: "Today",
-        newListItems: foundItems
+        newListItems: foundItems,
+        date: date,
+        temperature: bwTemp,
+        sunrise: sunriseHour,
+        sunset: sunsetHour,
+        hour: hour
       });
     }
   });
@@ -140,7 +173,8 @@ app.get("/:customListName", function(req, res) {
         // Show and existing list
         res.render("list", {
           listTitle: foundList.name,
-          newListItems: foundList.items
+          newListItems: foundList.items,
+          date: date
         });
       }
     }
