@@ -184,12 +184,6 @@ app.get("/:customListName", function(req, res) {
 });
 
 let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-
-app.set("port", port || 5000);
-
-app.listen(port, function() {
-  console.log("Server has started successfully at port 3000" + app.get("port"));
+app.listen(port || 3000, function() {
+  console.log("Server is started at port 3000");
 });
