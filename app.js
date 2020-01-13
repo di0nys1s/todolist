@@ -73,9 +73,6 @@ app.get("/", function(req, res) {
       bwTemp = Math.round(currentTemperature - 273);
       sunriseHour = hourSunrise;
       sunsetHour = hourSunset;
-      console.log(bwTemp);
-      console.log(sunriseHour);
-      console.log(sunsetHour);
     }
   );
 
