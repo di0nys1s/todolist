@@ -13,13 +13,14 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.set("useFindAndModify", false);
-// mongoose.connect(
-//   "mongodb+srv://admin-john:Bs26072013@cluster0-d7evf.mongodb.net/todolistDB",
-//   {
-mongoose.connect("mongodb://localhost:27017/todolistDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect(
+  "mongodb+srv://admin-john:Bs26072013@cluster0-d7evf.mongodb.net/todolistDB",
+  {
+    // mongoose.connect("mongodb://localhost:27017/todolistDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+);
 
 const day = new Date().getDate();
 const month = new Date().getMonth() + 1;
