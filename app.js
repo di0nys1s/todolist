@@ -175,7 +175,11 @@ app.get("/:customListName", function(req, res) {
         res.render("list", {
           listTitle: foundList.name,
           newListItems: foundList.items,
-          date: date
+          date: date,
+          temperature: bwTemp,
+          sunrise: sunriseHour,
+          sunset: sunsetHour,
+          hour: hour
         });
       }
     }
