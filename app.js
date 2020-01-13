@@ -188,6 +188,8 @@ if (port == null || port == "") {
   port = 3000;
 }
 
+app.set("port", port || 5000);
+
 app.listen(port, function() {
-  console.log("Server has started successfully at port 3000");
+  console.log("Server has started successfully at port 3000" + app.get("port"));
 });
