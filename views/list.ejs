@@ -1,39 +1,61 @@
-
-<%- include("header") -%>
-
-<% const time = new Date().toLocaleTimeString("en-US"); %>
+<%- include("header") -%> <% const time = new
+Date().toLocaleTimeString("en-US"); %>
 
 <div class="box" id="heading">
-    <h1> <%= listTitle %> <%= date %> </h1>
-            <form class="weather-form" action="/" method="get">
-                <p class="text-weather">Current Temperature: <%= temperature %>&#8451;</p>
-            </form> 
+  <h1><%= listTitle %> <%= date %></h1>
+  <form class="weather-form" action="/" method="get">
+    <p class="text-weather">Current Temperature: <%= temperature %>&#8451;</p>
+  </form>
 </div>
 
 <div class="container-fluid box">
-    <div class="row">
-        <p class="text-time">Time: <%= time %></p>
-        <% newListItems.forEach(function(item) { %>
-        <div class="form-group">
-            <form action="delete" method="post">
-                <div class="item">
-               <%#      <input type="checkbox" name="checkbox" value=" item._id " onChange="this.form.submit()"> %>
-                    <p class="todo-content" onclick="test()"> <%= item.name %></p>
-                    <div class="delete-item">
-                        <button type="submit" name="delete" value="<%= item._id %>" onChange="this.form.submit()"
-                            class="btn btn-danger btn-delete">Delete</button>
-                    </div>
-                </div>
-                <input type="hidden" name="listName" value="<%= listTitle %>" />
-            </form>
-            <% }) %>
-            <form class="item" action="/" method="post">
-                <input class="form-control mr-sm-2" type="text" minlength="3" maxlength="36" name="newItem"
-                    placeholder="New Item" autocomplete="off" required>
-                <button class="btn" type="submit" name="list" value="<%= listTitle %>">Add New Item</button>
-            </form>
+  <div class="row">
+    <p class="text-time">Time: <%= time %></p>
+    <% newListItems.forEach(function(item) { %>
+    <div class="form-group">
+      <form action="delete" method="post">
+        <div class="item">
+          <%#
+          <input
+            type="checkbox"
+            name="checkbox"
+            value=" item._id "
+            onChange="this.form.submit()"
+          />
+          %>
+          <p class="todo-content" onclick="test()"><%= item.name %></p>
+          <div class="delete-item">
+            <button
+              type="submit"
+              name="delete"
+              value="<%= item._id %>"
+              onChange="this.form.submit()"
+              class="btn btn-danger btn-delete"
+            >
+              Delete
+            </button>
+          </div>
         </div>
-
+        <input type="hidden" name="listName" value="<%= listTitle %>" />
+      </form>
+      <% }) %>
+      <form class="item" action="/" method="post">
+        <input
+          class="form-control mr-sm-2"
+          type="text"
+          minlength="3"
+          maxlength="36"
+          name="newItem"
+          placeholder="New Item"
+          autocomplete="off"
+          required
+        />
+        <button class="btn" type="submit" name="list" value="<%= listTitle %>">
+          Add New Item
+        </button>
+      </form>
     </div>
-    <%- include("footer") -%>
-    <%- include("clock") -%>
+  </div>
+  <%- include("footer") -%> 
+  <%- include("clock") -%>
+</div>

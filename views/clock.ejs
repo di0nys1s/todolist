@@ -1,25 +1,15 @@
-
-
 <script>
-clock = setInterval(clock, 1000);
+  clock = setInterval(clock, 1000);
 
-function clock() {
-  const now = new Date().toLocaleTimeString("en-US");
-  txtClock = document.querySelector(".text-time"); 
-  txtClock.innerHTML = "Time: " + now;
-}
+  function clock() {
+    const now = new Date().toLocaleTimeString("en-US");
+    txtClock = document.querySelector(".text-time");
+    txtClock.innerHTML = "Time: " + now;
+  }
 
-        if (<%= hour %> >= <%= sunrise %> && <%= hour %> < <%= sunset %> ) {
-            document.querySelector("body").style.backgroundColor = "#f1c40f";
-        } else {
-            document.querySelector("body").style.backgroundColor = "#2c3e50";
-
-        }
-
-// function test() {
-//   $(".todo-content").css("color", "blue");
-// }
-
-// document.querySelector(".todo-content").addEventListener("click", test);
-
+  if (<%= hour %> >= <%= sunrise %> && <%= hour %> < <%= sunset %> ) {
+      document.querySelector("body").style.backgroundColor = "#f1c40f";
+  } else {
+      document.querySelector("body").style.backgroundColor = "#2c3e50";
+    };
 </script>
