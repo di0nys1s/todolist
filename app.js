@@ -60,22 +60,23 @@ const List = mongoose.model("List", listSchema);
 let bwTemp = 0;
 let sunriseHour = 0;
 let sunsetHour = 0;
-app.get("/", function(req, res) {
-  request(
-    "http://api.openweathermap.org/data/2.5/weather?q=Melbourne,au&APPID=eebb82456e95e58d67552ad0e1ad6cf9",
-    function(error, response, body) {
-      var data = JSON.parse(body);
-      var currentTemperature = data.main.temp;
-      var sunriseTimestamp = data.sys.sunrise;
-      var sunsetTimestamp = data.sys.sunset;
-      var hourSunrise = new Date(sunriseTimestamp * 1000).getHours();
-      var hourSunset = new Date(sunsetTimestamp * 1000).getHours();
-      bwTemp = Math.round(currentTemperature - 273);
-      sunriseHour = hourSunrise;
-      sunsetHour = hourSunset;
-    }
-  );
 
+request(
+  "http://api.openweathermap.org/data/2.5/weather?q=Melbourne,au&APPID=eebb82456e95e58d67552ad0e1ad6cf9",
+  function(error, response, body) {
+    var data = JSON.parse(body);
+    var currentTemperature = data.main.temp;
+    var sunriseTimestamp = data.sys.sunrise;
+    var sunsetTimestamp = data.sys.sunset;
+    var hourSunrise = new Date(sunriseTimestamp * 1000).getHours();
+    var hourSunset = new Date(sunsetTimestamp * 1000).getHours();
+    bwTemp = Math.round(currentTemperature - 273);
+    sunriseHour = hourSunrise;
+    sunsetHour = hourSunset;
+  }
+);
+
+app.get("/", function(req, res) {
   Item.find({}, function(err, foundItems) {
     if (foundItems.length === 0) {
       Item.insertMany(defaultItems, function(err) {
